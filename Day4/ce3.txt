@@ -1,0 +1,40 @@
+package pracWebElement;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ClassExercise3 {
+
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		WebDriver  driver;
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		driver=new ChromeDriver(co);
+		driver.get("https://demo.opencart.com/index.php?route=checkout/voucher&language=en-gb");
+		WebElement rec_name=driver.findElement(By.xpath("//*[@id=\"input-to-name\"]"));
+		rec_name.sendKeys("sam");
+		WebElement email=driver.findElement(By.xpath("//*[@name=\"to_email\"]"));
+		email.sendKeys("sam@gmail.com");
+		WebElement your_name=driver.findElement(By.xpath("//*[@id=\"input-from-name\"]"));
+		your_name.sendKeys("joy");
+		WebElement your_email=driver.findElement(By.xpath("//*[@id=\"input-from-email\"]"));
+		your_email.sendKeys("joy@gmail.com");
+		WebElement birthday=driver.findElement(By.xpath("//*[@id=\"input-theme-7\"]"));
+		birthday.click();
+		
+		WebElement I_understand=driver.findElement(By.xpath("//*[@name='agree']"));
+		I_understand.click();
+		WebElement continue_btn=driver.findElement(By.xpath("//*[@id=\"form-voucher\"]/div[8]/div/button"));
+		continue_btn.click();
+		
+		
+		
+	}
+
+}
